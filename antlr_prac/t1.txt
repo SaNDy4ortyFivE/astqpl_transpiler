@@ -1,0 +1,17 @@
+integer a = 10
+integer b = 20
+integer d
+if a < b
+  number c
+  c = 5
+  if a > c
+    output a
+  end
+else
+  d = 10
+  if d > b
+    output d
+  else
+    output b
+  end
+end

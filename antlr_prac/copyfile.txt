@@ -1,0 +1,97 @@
+# Enter a parse tree produced by v1Parser#stmt.
+  def enterStmt(self, ctx:v1Parser.StmtContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#stmt.
+  def exitStmt(self, ctx:v1Parser.StmtContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#line.
+  def enterLine(self, ctx:v1Parser.LineContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#line.
+  def exitLine(self, ctx:v1Parser.LineContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#v_init.
+  def enterV_init(self, ctx:v1Parser.V_initContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#v_init.
+  def exitV_init(self, ctx:v1Parser.V_initContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#decl.
+  def enterDecl(self, ctx:v1Parser.DeclContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#decl.
+  def exitDecl(self, ctx:v1Parser.DeclContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#assign.
+  def enterAssign(self, ctx:v1Parser.AssignContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#assign.
+  def exitAssign(self, ctx:v1Parser.AssignContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#both.
+  def enterBoth(self, ctx:v1Parser.BothContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#both.
+  def exitBoth(self, ctx:v1Parser.BothContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#d_type.
+  def enterD_type(self, ctx:v1Parser.D_typeContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#d_type.
+  def exitD_type(self, ctx:v1Parser.D_typeContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#conditional.
+  def enterConditional(self, ctx:v1Parser.ConditionalContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#conditional.
+  def exitConditional(self, ctx:v1Parser.ConditionalContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#r_if.
+  def enterR_if(self, ctx:v1Parser.R_ifContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#r_if.
+  def exitR_if(self, ctx:v1Parser.R_ifContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#relation.
+  def enterRelation(self, ctx:v1Parser.RelationContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#relation.
+  def exitRelation(self, ctx:v1Parser.RelationContext):
+      pass
+
+
+  # Enter a parse tree produced by v1Parser#output.
+  def enterOutput(self, ctx:v1Parser.OutputContext):
+      pass
+
+  # Exit a parse tree produced by v1Parser#output.
+  def exitOutput(self, ctx:v1Parser.OutputContext):
+      pass
