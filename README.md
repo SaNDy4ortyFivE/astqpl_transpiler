@@ -43,10 +43,10 @@ end
 ```
 use LMTEMP
 class MyClass
-		/*creating an instance*/
+        /*creating an instance*/
         LMTEMP lmtp
         action Main()
-		        /*setting up its pin number*/
+		/*setting up its pin number*/
                 lmtp:pinLMTP(10)
                 /*variable with data type as number*/
                 number a
@@ -63,7 +63,7 @@ class MyClass
 		/*creating instance*/
         BUTTON btn
         action Main()
-		        /*setting up a pin*/
+		/*setting up a pin*/
                 btn:pinBTN(10)
                 integer a
                 /*read button state*/
@@ -79,7 +79,7 @@ class MyClass
 		/*creating instance*/
         IRED ired
         action Main()
-		        /*setting up the pin*/
+		/*setting up the pin*/
                 ired:pinIR(10)
                 integer a
                 /*reading the value*/
@@ -95,7 +95,7 @@ class MyClass
 		/*creating instance*/
         LED ledred
         action Main()
-		        /*set the pin*/
+		/*set the pin*/
                 ledred:pin(10)
                 ledred:ON()
                 /*ledred:OFF()*/

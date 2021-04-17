@@ -5,6 +5,11 @@ class MyClass
                 ired:pinIR(10)
                 integer a
                 a = ired:READVAL()
-                output a
+                integer b = 20
+                if a < 20
+                        output a
+                else
+                        output b
+                end
         end
 end

@@ -4,7 +4,7 @@ class MyClass
         action Main()
                 lmtp:pinLMTP(10)
                 number a
-                a = ired:READTEMP()
+                a = lmtp:READTEMP()
                 output a
         end
 end

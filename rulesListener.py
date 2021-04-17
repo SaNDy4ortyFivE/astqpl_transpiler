@@ -12,10 +12,13 @@ class rulesListener(ParseTreeListener):
 
     # Enter a parse tree produced by rulesParser#stmt.
     def enterStmt(self, ctx:rulesParser.StmtContext):
+        handleNode.initTree()
         pass
 
     # Exit a parse tree produced by rulesParser#stmt.
     def exitStmt(self, ctx:rulesParser.StmtContext):
+        ##handleNode.printTree()
+        handleNode.startTranspiling()
         pass
 
 
@@ -68,20 +71,20 @@ class rulesListener(ParseTreeListener):
             if not ctx.ret_val().ret_high_low() is None:
                 if not ctx.ret_val().ret_high_low().IRED_READ() is None:
                     funs_name =  ctx.ret_val().ret_high_low().IRED_READ().getText()
-                    print("tring to read value of IR {}...".format(lib_name))
+                    ##print("tring to read value of IR {}...".format(lib_name))
                 elif not ctx.ret_val().ret_high_low().BTN_STATE() is None:
                     funs_name =  ctx.ret_val().ret_high_low().BTN_STATE().getText()
-                    print("tring to read state of button {}...".format(lib_name))
+                    ##print("tring to read state of button {}...".format(lib_name))
             elif not ctx.ret_val().ret_integer() is None:
                 if not ctx.ret_val().ret_integer().USONIC_DIST() is None:
                     funs_name =  ctx.ret_val().ret_integer().USONIC_DIST().getText()
-                    print("tring to read distance from USONIC {}...".format(lib_name))
+                    ##print("tring to read distance from USONIC {}...".format(lib_name))
             elif not ctx.ret_val().ret_number() is None:
                 if not ctx.ret_val().ret_number().LMTEMP_READ() is None:
-                    funs_name =  ctx.ret_val().ret_number().LMTEMP().getText()
-                    print("tring to read temperature from LMTEMP {}...".format(lib_name))
-        print("var={}, value={}, lib={}, funs={}".format(var, value, lib_name, funs_name))
-        handleNode.addAssign(var, value)
+                    funs_name =  ctx.ret_val().ret_number().LMTEMP_READ().getText()
+                    ##print("tring to read temperature from LMTEMP {}...".format(lib_name))
+        ##print("var={}, value={}, lib={}, funs={}".format(var, value, lib_name, funs_name))
+        handleNode.addAssign(var, value, lib_name, funs_name)
         pass
 
     # Exit a parse tree produced by rulesParser#assign.
@@ -111,20 +114,20 @@ class rulesListener(ParseTreeListener):
             if not ctx.ret_val().ret_high_low() is None:
                 if not ctx.ret_val().ret_high_low().IRED_READ() is None:
                     funs_name =  ctx.ret_val().ret_high_low().IRED_READ().getText()
-                    print("tring to read value of IR {}...".format(lib_name))
+                    ##print("tring to read value of IR {}...".format(lib_name))
                 else:
                     funs_name =  ctx.ret_val().ret_high_low().BTN_STATE().getText()
-                    print("tring to read state of button {}...".format(lib_name))
+                    ##print("tring to read state of button {}...".format(lib_name))
             elif not ctx.ret_val().ret_integer() is None:
                 if not ctx.ret_val().ret_integer().USONIC_DIST() is None:
                     funs_name =  ctx.ret_val().ret_integer().USONIC_DIST().getText()
-                    print("tring to read distance from USONIC {}...".format(lib_name))
+                    ##print("tring to read distance from USONIC {}...".format(lib_name))
             elif not ctx.ret_val().ret_number() is None:
                 if not ctx.ret_val().ret_number().LMTEMP_READ() is None:
                     funs_name =  ctx.ret_val().ret_number().LMTEMP().getText()
-                    print("tring to read temperature from LMTEMP {}...".format(lib_name))
-        print("dtype={}, var={}, value={}, lib={}, funs={}".format(d_type, var, value, lib_name, funs_name))
-        handleNode.addBoth(d_type,var,value)
+                    ##print("tring to read temperature from LMTEMP {}...".format(lib_name))
+        ##print("dtype={}, var={}, value={}, lib={}, funs={}".format(d_type, var, value, lib_name, funs_name))
+        handleNode.addBoth(d_type,var,value,lib_name,funs_name)
         pass
 
 
@@ -269,46 +272,55 @@ class rulesListener(ParseTreeListener):
         if not ctx.funs().led_related() is None:
             shortctx = ctx.funs().led_related()
             if not shortctx.LED_ON() is None:
-                print("Turning LED {} on...".format(ins))
+                ##print("Turning LED {} on...".format(ins))
                 handleNode.turnLedOn(ins)
             elif not shortctx.LED_OFF() is None:
-                print("Turning LED {} off...".format(ins))
+                ##print("Turning LED {} off...".format(ins))
                 handleNode.turnLedOff(ins)
             elif not shortctx.LED_PIN() is None:
                 p = int(shortctx.LED_PIN().getText()[7:-1])
-                print("LED connected at pin {}".format(p))
+                ##print("LED connected at pin {}".format(p))
                 handleNode.addLED(ins, p)
         elif not ctx.funs().ired_related() is None:
             shortctx = ctx.funs().ired_related()
             if not shortctx.IRED_READ() is None:
-                print("tring to read to {} IR...".format(ins))
+                ##print("tring to read to {} IR...".format(ins))
+                handleNode.readIRED(ins)
             else:
                 p = int(shortctx.IRED_PIN().getText()[6:-1])
-                print("IR {} connected at pin {}".format(ins, p))
+                ##print("IR {} connected at pin {}".format(ins, p))
+                handleNode.addIRED(ins, p)
         elif not ctx.funs().usonic_related() is None:
             shortctx = ctx.funs().usonic_related()
             if not shortctx.TRIG_PIN() is None:
                 tp = int(shortctx.TRIG_PIN().getText()[8:-1])
-                print("USON {} has trig pin at {}".format(ins, tp))
+                ##print("USON {} has trig pin at {}".format(ins, tp))
+                handleNode.addUsonTrig(ins, tp)
             elif not shortctx.ECHO_PIN() is None:
                 ep = int(shortctx.ECHO_PIN().getText()[8:-1])
-                print("USON {} has echo pin at {}".format(ins, ep))
+                ##print("USON {} has echo pin at {}".format(ins, ep))
+                handleNode.addUsonEcho(ins, ep)
             else:
-                print("Reading distance from US {}".format(ins))
+                ##print("Reading distance from US {}".format(ins))
+                handleNode.readUsonDist(ins)
         elif not ctx.funs().btn_related() is None:
             shortctx = ctx.funs().btn_related()
             if not shortctx.BTN_PIN() is None:
                 p = int(shortctx.BTN_PIN().getText()[7:-1])
-                print("Button {} connected at {}".format(ins, p))
+                ##print("Button {} connected at {}".format(ins, p))
+                handleNode.addButton(ins, p)
             else:
-                print("Reading state of button {}".format(ins))
+                ##print("Reading state of button {}".format(ins))
+                handleNode.readBtnState(ins)
         else:
             shortctx = ctx.funs().lmtemp_related()
             if not shortctx.LMTEMP_PIN() is None:
                 p = int(shortctx.LMTEMP_PIN().getText()[8:-1])
-                print("LMTEMP {} connected at {}".format(ins, p))
+                ##print("LMTEMP {} connected at {}".format(ins, p))
+                handleNode.addLMTEMP(ins, p)
             else:
-                print("Reading Temperature from button {}".format(ins))
+                ##print("Reading Temperature from button {}".format(ins))
+                handleNode.readLMTemp()
         pass
 
     # Exit a parse tree produced by rulesParser#funcall.
