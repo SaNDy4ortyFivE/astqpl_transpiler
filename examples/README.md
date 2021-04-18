@@ -44,7 +44,8 @@ Attach trigger pin: instance_name:trigpin(pin_number)
 Attach echo pin: instance_name:echopin(pin_number)
 Read Distance: instane_name:GETDISTANCE()...returns distance in cms(int value)
 ```
-__Note: int is called as integer in quorum__
+__Note: int is called as integer in quorum__  
+
 7. quorum_button.txt  
 ```
 Demonstration of how to use a simple push button in quorum
