@@ -31,6 +31,7 @@ ret_val         : ( ret_high_low | ret_integer | ret_number );
 ret_high_low    : ( IRED_READ | BTN_STATE );
 ret_integer     : USONIC_DIST;
 ret_number      : LMTEMP_READ;
+
 /*Lexer rules*/
 
 fragment A  : 'a';

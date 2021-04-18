@@ -9,6 +9,8 @@ SETUP_parent = None
 LOOP_TREE = None
 LOOP_parent = None
 
+TRANSPILED_LINES = []
+
 methods_dict = {"ON()":"digitalWrite({},HIGH);",\
                 "OFF()":"digitalWrite({},LOW);",\
                 "GETDISTANCE()":"getUsonDistance({},{})",\
@@ -24,6 +26,7 @@ def initTree():
     ##runs before every transpilation
     global CONSTANTS_TREE, SETUP_TREE, LOOP_TREE
     global CONSTANTS_parent, SETUP_parent, LOOP_parent
+    global TRANSPILED_LINES
 
     ##setup tress
     CONSTANTS_TREE = AnyNode(nodename="const_root")
@@ -33,6 +36,8 @@ def initTree():
     CONSTANTS_parent = CONSTANTS_TREE
     SETUP_parent = SETUP_TREE
     LOOP_parent = LOOP_TREE
+    ##emptying previous lines
+    TRANSPILED_LINES = []
 
 def addNodeOutput(variable):
     ##output node only allowed in loop_tree
@@ -226,6 +231,8 @@ def constructCode(lib_name):
 def startTranspiling():
     global CONSTANTS_TREE, SETUP_TREE, LOOP_TREE
     global methods_dict, rel_op_dict, dtype_dict
+    global TRANSPILED_LINES
+
     skipped_first = False
     c = ""
     ##stores if any extra functions need to be added
@@ -326,5 +333,15 @@ def startTranspiling():
     for extra in extras:
         transplied.extend(constructCode(extra))
 
+    print(RenderTree(CONSTANTS_TREE))
+    print(RenderTree(SETUP_TREE))
+    print(RenderTree(LOOP_TREE))
+
     for line in transplied:
         print(line)
+
+    TRANSPILED_LINES = transplied
+
+def getLines():
+    global TRANSPILED_LINES
+    return TRANSPILED_LINES

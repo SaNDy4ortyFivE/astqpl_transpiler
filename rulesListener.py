@@ -124,7 +124,7 @@ class rulesListener(ParseTreeListener):
                     ##print("tring to read distance from USONIC {}...".format(lib_name))
             elif not ctx.ret_val().ret_number() is None:
                 if not ctx.ret_val().ret_number().LMTEMP_READ() is None:
-                    funs_name =  ctx.ret_val().ret_number().LMTEMP().getText()
+                    funs_name =  ctx.ret_val().ret_number().LMTEMP_READ().getText()
                     ##print("tring to read temperature from LMTEMP {}...".format(lib_name))
         ##print("dtype={}, var={}, value={}, lib={}, funs={}".format(d_type, var, value, lib_name, funs_name))
         handleNode.addBoth(d_type,var,value,lib_name,funs_name)

@@ -1,14 +1,17 @@
+use LED
 use BUTTON
 class MyClass
+        LED led
         BUTTON btn
         action Main()
-                btn:pinBTN(10)
+                led:pinLED(2)
+                btn:pinBTN(3)
                 integer a
                 a = btn:STATE()
                 if a = 1
-                        output a
+                        led:ON()
                 else
-                        output a
+                        led:OFF()
                 end
         end
 end

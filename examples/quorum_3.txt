@@ -1,0 +1,24 @@
+use LMTEMP
+use LED
+use BUTTON
+class MyClass
+        LMTEMP lmtmp
+        BUTTON btn
+        LED led
+        action Main()
+                lmtmp:pinLMTP(14)
+                btn:pinBTN(2)
+                led:pinLED(13)
+                number a = 0
+                integer b = 0
+                b = btn:STATE()
+                if b = 1
+                        a = lmtmp:READTEMP()
+                        if a > 5
+                                led:ON()
+                        else
+                                led:OFF()
+                        end
+                end
+        end
+end

@@ -20,7 +20,8 @@
 2. Less than _(<)_
 3. Greater than _(>)_
 
-**_Support for underscores and numerals for variable names is not added_**
+**_Support for underscores and numerals for variable names is not added_**  
+**_No blank lines are allowed in the code_**
 
 #### Component  Methods
 ##### Ultrasonic HC-SR04
@@ -43,16 +44,16 @@ end
 ```
 use LMTEMP
 class MyClass
-        /*creating an instance*/
-        LMTEMP lmtp
-        action Main()
+	/*creating an instance*/
+	LMTEMP lmtp
+	action Main()
 		/*setting up its pin number*/
-                lmtp:pinLMTP(10)
-                /*variable with data type as number*/
-                number a
-                /*read value from sensor*/
-                a = lmtp:READTEMP()
-        end
+		lmtp:pinLMTP(10)
+		/*variable with data type as number*/
+		number a
+		/*read value from sensor*/
+		a = lmtp:READTEMP()
+	end
 end
 ```
 
@@ -60,15 +61,15 @@ end
 ```
 use BUTTON
 class MyClass
-		/*creating instance*/
-        BUTTON btn
-        action Main()
+	/*creating instance*/
+	BUTTON btn
+	action Main()
 		/*setting up a pin*/
-                btn:pinBTN(10)
-                integer a
-                /*read button state*/
-                a = btn:STATE()
-        end
+		btn:pinBTN(10)
+		integer a
+		/*read button state*/
+		a = btn:STATE()
+		end
 end
 
 ```
@@ -76,14 +77,14 @@ end
 ```
 use IRED
 class MyClass
-		/*creating instance*/
-        IRED ired
-        action Main()
+	/*creating instance*/
+	IRED ired
+	action Main()
 		/*setting up the pin*/
-                ired:pinIR(10)
-                integer a
-                /*reading the value*/
-                a = ired:READVAL()
+		ired:pinIR(10)
+		integer a
+		/*reading the value*/
+		a = ired:READVAL()
         end
 end
 ```
@@ -92,17 +93,21 @@ end
 ```
 use LED
 class MyClass
-		/*creating instance*/
-        LED ledred
-        action Main()
+	/*creating instance*/
+	LED ledred
+	action Main()
 		/*set the pin*/
-                ledred:pin(10)
-                ledred:ON()
-                /*ledred:OFF()*/
-        end
+		ledred:pin(10)
+		ledred:ON()
+		/*ledred:OFF()*/
+	end
 end
 ```
 
+###### More Examples in examples folder
+
 #### Libraries
 1. ANTLR4 _(v4.8)_
-2. Anytree 
+- Generates lexer, parser and listener based on grammar file provided.
+2. Anytree
+- Library to help handling tree data structure in python.

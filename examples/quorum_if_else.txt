@@ -1,12 +1,8 @@
-use IRED
 class MyClass
-        IRED ired
         action Main()
-                ired:pinIR(10)
-                integer a
-                a = ired:READVAL()
+                integer a = 10
                 integer b = 20
-                if a < 20
+                if a > 5
                         output a
                 else
                         output b
