@@ -1,4 +1,4 @@
-### Arduino to Quorum Transpiler(v2.0)
+### Quorum to Arduino Transpiler(v2.0)
 #### Supported Componenets
 1. Ultrasonic sensor (HC-SR04)
 2. Temperature sensor(LM-35)
