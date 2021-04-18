@@ -54,7 +54,7 @@ BUTTON
 Functions:
 Attach pin: instance_name:pinBTN(pin_number)
 Read button state: instane_name:STATE()... returns 1 if button is pressed, else 0
-
+```
 8. quorum_1.txt  
 - Reads distance from ultrasonic sensor  
 - If value is less than 10, turns on red led and turns off blue led  
