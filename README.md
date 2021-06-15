@@ -20,8 +20,9 @@
 2. Less than _(<)_
 3. Greater than _(>)_
 
-**_Support for underscores and numerals for variable names is not added_**  
+**_Support for underscores and numerals for variable names is not added_**
 **_No blank lines are allowed in the code_**
+**_Quroum supports variable initialization. Declaration is not yet supoorted but the feature is available in transpiler_**
 
 #### Component  Methods
 ##### Ultrasonic HC-SR04
